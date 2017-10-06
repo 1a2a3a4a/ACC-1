@@ -1,0 +1,32 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+package_reboot_if_required: true
+packages:
+ - python-pip
+ - python-dev
+ - build-essential
+ - python-openstackclient
+ - emacs24
+byobu_default: system 
+
+write_files:
+  - path: /home/ubuntu/docker/create_fenics.sh
+    content: |
+      sudo docker run -td -v $(pwd):/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:current
+      dd785034c0963d116d73bc6b618c8c8db88016ddcca6255cf3f877e772083df4
+  - path: /home/ubuntu/docker/login_fenics.sh
+    content: |
+      sudo docker ps | cut -c1-12
+  - path: /home/ubuntu/clone.sh
+    content: |
+      echo 'Cloning ACC-1'
+      git clone https://github.com/1a2a3a4a/ACC-1
+
+runcmd:
+ - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
+ - source /home/ubuntu/.bashrc
+ - apt-get update
+ - curl -fsSL https://get.docker.com/ | sh
+ - curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
