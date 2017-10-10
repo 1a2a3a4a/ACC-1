@@ -28,5 +28,6 @@ runcmd:
  - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
  - source /home/ubuntu/.bashrc
  - apt-get update
- - curl -fsSL https://get.docker.com/ | sh
- - curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
+ - sudo docker start 6f599663ff06
+ - sudo docker exec -t -i 6f599663ff06 bash /ACC-1/worker/start_worker.sh
+ 
