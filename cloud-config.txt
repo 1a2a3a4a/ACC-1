@@ -17,5 +17,5 @@ runcmd:
  - sudo apt-get update
  - sudo apt-get install docker.io
  - sudo docker pull jeffjonasson/acc1cloud:init
- - sudo run -i -t jeffjonasson/acc1cloud:init
- - sudo exec jeffjonasson/acc1cloud:init /local/ACC-1/worker/start_worker.sh
+ - sudo run -di jeffjonasson/acc1cloud:init
+ - sudo docker exec -t "$(sudo docker ps -q | sed -n 1p)" bash local/ACC-1/worker/start_worker.sh
