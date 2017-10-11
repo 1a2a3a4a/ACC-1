@@ -29,5 +29,5 @@ runcmd:
  - source /home/ubuntu/.bashrc
  - apt-get update
  - sudo docker start 6f599663ff06
- - sudo docker exec -t -i 6f599663ff06 bash /ACC-1/worker/start_worker.sh
+ - sudo docker exec -t -i 6f599663ff06 bash /home/fenics/shared/ACC-1/worker/start_worker.sh
  
