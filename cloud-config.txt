@@ -11,23 +11,11 @@ packages:
  - emacs24
 byobu_default: system 
 
-write_files:
-  - path: /home/ubuntu/docker/create_fenics.sh
-    content: |
-      sudo docker run -td -v $(pwd):/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:current
-      dd785034c0963d116d73bc6b618c8c8db88016ddcca6255cf3f877e772083df4
-  - path: /home/ubuntu/docker/login_fenics.sh
-    content: |
-      sudo docker ps | cut -c1-12
-  - path: /home/ubuntu/clone.sh
-    content: |
-      echo 'Cloning ACC-1'
-      git clone https://github.com/1a2a3a4a/ACC-1
-
 runcmd:
  - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
  - source /home/ubuntu/.bashrc
- - apt-get update
- - sudo docker start 6f599663ff06
- - sudo docker exec -t -i 6f599663ff06 bash /home/fenics/shared/ACC-1/worker/start_worker.sh
- 
+ - sudo apt-get update
+ - sudo apt-get install docker.io
+ - sudo docker pull jeffjonasson/acc1cloud:init
+ - sudo run -i -t jeffjonasson/acc1cloud:init
+ - sudo exec jeffjonasson/acc1cloud:init /local/ACC-1/worker/start_worker.sh
