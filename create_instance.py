@@ -43,7 +43,7 @@ def create_worker():
     #print(os.getcwd() + "\n")
 
 
-    cfg_file_path =  os.getcwd() + '/cloud-cfg.txt'
+    cfg_file_path =  os.getcwd() + '/cloud-config.txt'
     if os.path.isfile(cfg_file_path):
         userdata = open(cfg_file_path)
     else:
@@ -66,5 +66,5 @@ def create_worker():
 
     print "Instance: "+ instance.name +" is in " + inst_status + "state"
 
-if __name__ = "__main__":
-    create_vm()
+if __name__ == "__main__":
+    create_worker()
