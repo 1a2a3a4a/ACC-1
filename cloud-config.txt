@@ -20,5 +20,5 @@ runcmd:
  - apt-cache policy docker-ce
  - apt-get install -y docker-ce
  - docker pull jeffjonasson/acc1cloud:init
- - run -di jeffjonasson/acc1cloud:init
+ - docker run -di jeffjonasson/acc1cloud:init
  - docker exec -t "$(sudo docker ps -q | sed -n 1p)" bash local/ACC-1/worker/start_worker.sh
