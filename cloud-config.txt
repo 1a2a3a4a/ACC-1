@@ -9,6 +9,7 @@ packages:
  - build-essential
  - python-openstackclient
  - emacs24
+ - gmsh
 byobu_default: system 
 
 runcmd:
