@@ -1,8 +1,8 @@
 #!flask/bin/python
 from flask import Flask, jsonify
 import sys
-#import Celery
-
+import Celery
+from tasks import airfoil
 app = Flask(__name__)
 
 
@@ -13,10 +13,16 @@ app = Flask(__name__)
 #   http://127.0.0.1:5000/post/0/30/10/200/3
 def run_app(angle_start, angle_stop, n_angles, n_nodes, n_levels):
     # Do something with the arguments
-    angles = generate_angles(angle_start, angle_stop, n_angles)
-    tasks = push_tasks(angles, n_levels, n_nodes)
+    # angles = generate_angles(angle_start, angle_stop, n_angles)
+    # tasks = push_tasks(angles, n_levels, n_nodes)
     # Todo: Get results from tasks and return something
-    return 'asd'
+    result = airfoil.delay(angle_start,
+                           angle_stop,
+                           n_angles,
+                           n_nodes,
+                           n_levels).get()
+    
+    return result
 
 def generate_angles(angle_start, angle_stop, n_angles):
     angles = []
