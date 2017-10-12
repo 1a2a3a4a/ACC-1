@@ -9,9 +9,9 @@ def add(x, y):
         return x + y
     
 def airfoil(angle, n_levels, n_nodes):
-        solver_path = '../murtazo/navier_stokes_solver/'
-        #subprocess.call('.{0}/airfoil {1} {1} {2} {3}'
-        #                .format(solver_path, angle, n_levels, n_nodes))
-        with open(solver_path+'results/drag_ligt.m', results):                
+        resultFile = '../murtazo/navier_stokes_solver/results/drag_ligt.m'
+        subprocess.call('sh runAirfoil.sh {0} {1} {2}'
+                        .format(angle, n_levels, n_nodes))
+        with open(resultFile, 'r'):
                 return results.read()
         
