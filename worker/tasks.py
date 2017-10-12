@@ -8,10 +8,9 @@ app.config_from_object('celeryconfig')
 def add(x, y):
         return x + y
     
-def airfoil(angle, n_levels, n_nodes):
+def airfoil(start_angle, stop_angle, n_angles, n_levels, n_nodes):
         resultFile = '../murtazo/navier_stokes_solver/results/drag_ligt.m'
-        subprocess.call('sh runAirfoil.sh {0} {1} {2}'
-                        .format(angle, n_levels, n_nodes))
+        subprocess.call('sh runAirfoil.sh {0} {1} {2} {3} {4} {5}'.format(start_angle, stop_angle, n_angles, n_nodes, n_levels))
         with open(resultFile, 'r'):
                 return results.read()
         
