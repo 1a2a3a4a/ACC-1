@@ -1,4 +1,5 @@
 from celery import Celery
+import subprocess
 import sys
 import os
 app = Celery('tasks')
