@@ -2,6 +2,8 @@
 from flask import Flask, jsonify
 import sys
 import Celery
+import subprocess
+from create_instance import create_worker
 from tasks import airfoil
 app = Flask(__name__)
 
@@ -16,6 +18,12 @@ def run_app(angle_start, angle_stop, n_angles, n_nodes, n_levels):
     # angles = generate_angles(angle_start, angle_stop, n_angles)
     # tasks = push_tasks(angles, n_levels, n_nodes)
     # Todo: Get results from tasks and return something
+
+    #Run source script    
+    subprocess.call('sh source.sh', shell=True)
+    #Start worker
+    create_worker()
+    #Add task
     result = airfoil.delay(angle_start,
                            angle_stop,
                            n_angles,
