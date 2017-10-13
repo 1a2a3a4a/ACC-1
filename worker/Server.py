@@ -1,7 +1,7 @@
 #!flask/bin/python
 from flask import Flask, jsonify
 import sys
-import Celery
+import celery
 import subprocess
 from create_instance import create_worker
 import tasks
@@ -22,9 +22,9 @@ def run_app(angle_start, angle_stop, n_angles, n_nodes, n_levels):
     #Run source script    
     subprocess.call('sh source.sh', shell=True)
     #Start worker
-    create_worker()
+    #create_worker()
     #Add task
-    result = tasks.irfoil.delay(angle_start,
+    result = tasks.airfoil.delay(angle_start,
                                 angle_stop,
                                 n_angles,
                                 n_nodes,
