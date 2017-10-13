@@ -1,10 +1,10 @@
 #!flask/bin/python
 from flask import Flask, jsonify
 import sys
-import Celery
+# import Celery
 import subprocess
 from create_instance import create_worker
-from tasks import airfoil
+from worker import airfoil
 app = Flask(__name__)
 
 
@@ -30,7 +30,7 @@ def run_app(angle_start, angle_stop, n_angles, n_nodes, n_levels):
                            n_nodes,
                            n_levels).get()
     
-    return result
+    # return result
 
 def generate_angles(angle_start, angle_stop, n_angles):
     angles = []
