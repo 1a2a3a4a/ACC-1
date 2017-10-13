@@ -5,9 +5,6 @@ import os
 app = Celery('tasks')
 app.config_from_object('celeryconfig')
 
-@app.task
-def add(x, y):
-        return x + y
 @app.task    
 def airfoil(start_angle, stop_angle, n_angles, n_nodes, n_levels):
         result = ""
