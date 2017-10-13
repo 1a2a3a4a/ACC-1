@@ -30,7 +30,7 @@ def run_app(angle_start, angle_stop, n_angles, n_nodes, n_levels):
                            n_nodes,
                            n_levels).get()
     
-    # return result
+    return result
 
 def generate_angles(angle_start, angle_stop, n_angles):
     angles = []
