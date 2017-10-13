@@ -4,7 +4,7 @@ import sys
 # import Celery
 import subprocess
 from create_instance import create_worker
-from worker import airfoil
+import worker
 app = Flask(__name__)
 
 
@@ -24,11 +24,11 @@ def run_app(angle_start, angle_stop, n_angles, n_nodes, n_levels):
     #Start worker
     create_worker()
     #Add task
-    result = airfoil.delay(angle_start,
-                           angle_stop,
-                           n_angles,
-                           n_nodes,
-                           n_levels).get()
+    result = worker.airfoil.delay(angle_start,
+                                  angle_stop,
+                                  n_angles,
+                                  n_nodes,
+                                  n_levels).get()
     
     return result
 
