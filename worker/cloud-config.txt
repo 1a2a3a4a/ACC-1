@@ -23,6 +23,6 @@ runcmd:
  - echo 'Line 23 in config file'
  - docker pull jeffjonasson/acc1cloud:latest
  - echo 'Line 26 in config file'
- - docker run -di jeffjonasson/acc1cloud:latest
+ - docker run -di jeffjonasson/acc1cloud:latest /bin/bash
  - echo 'Line 27 in config file'
  - docker exec -t "$(sudo docker ps -q | sed -n 1p)" bash local/ACC-1/worker/start_worker.sh
