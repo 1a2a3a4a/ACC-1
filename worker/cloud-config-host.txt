@@ -1,0 +1,30 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+package_reboot_if_required: true
+packages:
+ - cowsay
+ - python-pip
+ - python-dev
+ - rabbitmq-server
+ - build-essential
+ - cowsay
+ - python-openstackclient
+ - emacs24
+ - gmsh
+byobu_default: system 
+
+
+runcmd:
+ - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
+ - source /home/ubuntu/.bashrc
+ - pip install Flask
+ - pip install celery
+ - pip install flower
+ - apt-get update
+ - apt install software-properties-common
+ - yes "" | sudo add-apt-repository cloud-archive:pike
+ - apt update && apt dist-upgrade
+ - apt install -y python-openstackclient
+ - git clone https://github.com/1a2a3a4a/ACC-1

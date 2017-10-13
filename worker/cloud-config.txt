@@ -1,0 +1,25 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+package_reboot_if_required: true
+packages:
+ - python-pip
+ - python-dev
+ - build-essential
+ - python-openstackclient
+ - emacs24
+ - gmsh
+byobu_default: system 
+
+runcmd:
+ - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
+ - source /home/ubuntu/.bashrc
+ - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+ - add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+ - apt-get update
+ - apt-cache policy docker-ce
+ - apt-get install -y docker-ce
+ - docker pull jeffjonasson/acc1cloud:latest
+ - docker run -di jeffjonasson/acc1cloud:latest
+ - docker exec -t "$(sudo docker ps -q | sed -n 1p)" bash local/ACC-1/worker/start_worker.sh
