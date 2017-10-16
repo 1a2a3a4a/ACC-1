@@ -11,4 +11,4 @@ cd /home/fenics/local/ACC-1/murtazo/cloudnaca/;
 cd /home/fenics/local/ACC-1/murtazo/cloudnaca/msh/;
 dolfin-convert ${MESHNAME}.msh ${MESHNAME}.xml;
 cd /home/fenics/local/ACC-1/murtazo/navier_stokes_solver/
-./airfoil 10 0.0001 10. 0.001 ../cloudnaca/msh/${MESHNAME}.xml
+./airfoil 10 0.0001 10. 0.1 ../cloudnaca/msh/${MESHNAME}.xml
