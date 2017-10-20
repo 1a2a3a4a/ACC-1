@@ -4,12 +4,10 @@ apt_update: true
 apt_upgrade: true
 package_reboot_if_required: true
 packages:
- - cowsay
  - python-pip
  - python-dev
  - rabbitmq-server
  - build-essential
- - cowsay
  - python-openstackclient
  - emacs24
  - gmsh
